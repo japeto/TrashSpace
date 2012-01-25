@@ -56,28 +56,32 @@ int ObstaculoList::size(){
 void ObstaculoList::insert(float xPos, float yPos, float zPos, int level){
 	
 	int randObj;
-	if(level==1)randObj= rand() % 7;
-	if(level==2)randObj= rand() % 8;
-	if(level>=3)randObj= rand() % 9;
+	if(level==1)randObj = 0;//rand() % 3;
+	//if(level==2)randObj= rand() % 8;
+	//if(level>=3)randObj= rand() % 9;
 	
 	Obstaculo* MyNode = new Obstaculo(xPos, yPos, zPos, NULL);
 	if (randObj==0)
 		MyNode->setObjType(PLANETA);
 	if (randObj==1)
-		MyNode->setObjType(VAISSEAU);
+		MyNode->setObjType(MODULO);
 	if (randObj==2)
-		MyNode->setObjType(TRAJEGEMINI);
+		MyNode->setObjType(VEHICULO1);
 	if (randObj==3)
-		MyNode->setObjType(NAVEGHAWK);
+		MyNode->setObjType(VEHICULO2);
 	if (randObj==4)
-		MyNode->setObjType(HombreEspacial1);
+		MyNode->setObjType(SATELITE);
 	if (randObj==5)
-		MyNode->setObjType(HombreEspacial2);
+		MyNode->setObjType(TELESCOPIOE);
 	if(randObj==7)
-		MyNode->setObjType(HombreEspacial3);
+		MyNode->setObjType(SATELITE1);
 	if(randObj==8)
-		MyNode->setObjType(MERCURY);
-
+		MyNode->setObjType(ANTENA);
+	if(randObj==9)
+		MyNode->setObjType(VEHICULO3);
+	if(randObj==10)
+		MyNode->setObjType(BUSCADOR);		
+		
 	if(last != 0){
 		last->setNext(MyNode);
 		last = MyNode;
@@ -87,7 +91,6 @@ void ObstaculoList::insert(float xPos, float yPos, float zPos, int level){
         current = first;
 	}
 }
-
 
 void ObstaculoList::remove(){
     if (isEmpty()){
@@ -100,7 +103,6 @@ void ObstaculoList::remove(){
         first = first->getNext();
     }
 }
-
 
 void ObstaculoList::moveAll(int level){
 	float zparameter = 0;

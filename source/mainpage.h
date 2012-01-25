@@ -29,8 +29,22 @@
 * - <b>source/</b><br/>Contiene los archivos fuentes headers (.h) y los sources (.cpp)
 * 
 * @section alg Algoritmos importantes
+* <b>
+* La "bola de delimitación" (o "disco" o "esfera") de un objeto geométrico es el círculo más pequeño en una esfera (en el espacio 3D),
+* que contiene el objeto. También se le llama la "esfera de expansión mínima" del objeto. 
+* En cualquier dimensión, la bola de delimitación de un objeto lineal geométrica (definida por su conjunto de vértices) es único,
+* y se especifica por un punto central C y un radio R. Dado un conjunto S de puntos, hay una bola única de delimitación que contiene S .
+* 
+* Es fácil probar que un punto está dentro de una bola de delimitación de verificar que está dentro de la distancia R del centro de C.
+* Además, dos bolas, por ejemplo B1 y B2, son disjuntos si la distancia entre sus centros es mayor que la suma de sus radios,
+* es decir: d (C1, C2)> R1 + R2. Por lo tanto, estas pruebas básicas son muy simples y eficientes, 
+* sin importar cuál es la dimensión de los objetos involucrados. 
+* Este no es el caso de los contenedores lineales, donde el número de pruebas de la desigualdad aumenta con la dimensión del espacio. 
+* Por otro lado, es más difícil de precompute la bola de delimitación de un conjunto de puntos ya que las expresiones de segundo grado están implicados.
+* </b>
+* <br/>
 * ver ObstaculoList<br/>
-* ver Camara
+* ver Camara<br/>
 * <hr>
 * @section sht Pantallasos
 * @verbinclude sht
