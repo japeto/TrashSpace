@@ -1,0 +1,16 @@
+# Doxyfile 1.3.9.1
+# Jefferson Amado Pena Torres <jeffersonamado@gmail.com>
+#
+
+PROJECT_NAME 			= 'TrashSpace'
+PROJECT_NUMBER         	= 0.0.2
+REPEAT_BRIEF           	= YES
+JAVADOC_AUTOBRIEF      	= YES
+WARNINGS               	= YES
+INPUT 					=./source
+FILE_PATTERNS          	= *.h *.cpp *.c
+RECURSIVE              	= YES
+GENERATE_LATEX         	= NO
+OUTPUT_DIRECTORY		= ./doc
+GENERATE_HTML 			= YES
+EXCLUDE_PATTERNS 		=../../source/mainpage.h
