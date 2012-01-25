@@ -1,4 +1,6 @@
-
+/*!
+*
+*/
 #include <cstdlib>
 #include <cstdio>
 #include <cmath>
@@ -18,6 +20,7 @@
 #include "imageloader.h"  		//
 using namespace std;
 
+///Creado para el algoritmo bola
 bool boundSphere = false;
 bool testMode = false;
 
@@ -47,7 +50,7 @@ int margin = MARGIN;
 //
 GLfloat position[] = {0,0,0,0};
         
-// Game speed (milliseconds)
+//Velocidad de creacion y velocidad de desplazamiento
 int speedMove   = 100;
 int speedCreate = 1000;
 
@@ -62,7 +65,7 @@ float planetAngle = 0;
 GLuint worldTexId;
 GLuint menuTexId;
 GLuint gameoverTexId;
-GLuint sunTexId;
+GLuint texturaPlanetas;
 GLuint playTexId;
 GLuint instructionTexId;
 GLuint creditsTexId;
@@ -79,7 +82,6 @@ Player juGador;
 ObstaculoList listaOstaculos;
 
 
-// Game values for Level 1
 void setLevel1(){
 	
 	glClearColor(90,90,90,0);
@@ -88,17 +90,14 @@ void setLevel1(){
     levelCounter = LEVEL_TIME;
     titleCounter = TITLE_TIME;
     
-    // Start fog at 1/2 of play field for Level 1
     fogStart = -(GAME_DEPTH) * FOGEND_L1*0.50;
     fogEnd   = -(GAME_DEPTH) * FOGEND_L1;
 
-    speedCreate = SPAWN_L1;
+    speedCreate = SPEEDCREATE_L1;
 
-    // Clear level
     listaOstaculos.removeAll();
 }
 
-// Game values for Level 2
 void setLevel2()
 {
 	glClearColor(0,90,0,0);
@@ -107,13 +106,11 @@ void setLevel2()
     levelCounter = LEVEL_TIME;
     titleCounter = TITLE_TIME;
     
-    // Start fog at 1/2 of play field for Level 2
     fogStart = -(GAME_DEPTH) * FOGEND_L2*0.50;
     fogEnd   = -(GAME_DEPTH) * FOGEND_L2;
 
-    speedCreate = SPAWN_L2;
+    speedCreate = SPEEDCREATE_L2;
     
-    // Clear level
     listaOstaculos.removeAll();
 }
 
@@ -125,11 +122,10 @@ void setLevel3()
     levelCounter = LEVEL_TIME;
     titleCounter = TITLE_TIME;
 
-    // Start fog at 1/2 of play field for Level 3
     fogStart = -(GAME_DEPTH) * FOGEND_L3*0.50;
     fogEnd   = -(GAME_DEPTH) * FOGEND_L3;
 
-    speedCreate = SPAWN_L3;
+    speedCreate = SPEEDCREATE_L3;
     
     // Clear level
     listaOstaculos.removeAll();
@@ -143,13 +139,11 @@ void setLevel3Plus()
 	levelCounter= LEVEL_TIME;
 	titleCounter = TITLE_TIME;
 
-	//fog constant
 	fogStart = -(GAME_DEPTH) * FOGEND_L3*0.50;
     fogEnd   = -(GAME_DEPTH) * FOGEND_L3;
 
-	speedCreate = SPAWN_L3/(level);
+	speedCreate = SPEEDCREATE_L3/(level);
 
-	// Clear level
     listaOstaculos.removeAll();
 }
 
@@ -164,7 +158,7 @@ void resetLevel3Plus()
 	fogStart = -(GAME_DEPTH) * FOGEND_L3*0.50;
     fogEnd   = -(GAME_DEPTH) * FOGEND_L3;
 
-	speedCreate = SPAWN_L3/(level);
+	speedCreate = SPEEDCREATE_L3/(level);
 }
 
 //
@@ -419,10 +413,9 @@ void drawStats()
     glRasterPos2i( 1, height - 18);
     sprintf(buffer, "Nivel %i", level);
     printString(buffer);
-
-    if (titleCounter != 0)
-    {
-        glColor3f(1,1,1);
+	//Titulo q aparece al iniciar indicando el nivel
+    if (titleCounter != 0) {
+        glColor3f(0,0,0);
         glRasterPos2i(width/2 - 40, height/2 - 18);
         printString(buffer);
         titleCounter -= 1;
@@ -435,9 +428,8 @@ void drawStats()
     printString(buffer);
     sprintf(buffer, "    Puntaje: %i", juGador.getPoints());
     printString(buffer);
-    
-    if (testMode)
-    {
+    //modo especial para probar todo
+    if (testMode){
         glRasterPos2i( width/2 - 10, 0);
         sprintf(buffer, "MODO JAPETO");
         printString(buffer);
@@ -613,6 +605,7 @@ void reshape(int w, int h){
     yPrev = yPrev / height * h;
     width = w;
     height = h;
+    cout<<w<<" , "<<h<<"\n";
     glViewport(0, 0, (GLsizei) w, (GLsizei) h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -649,7 +642,7 @@ void keyUp (unsigned char key, int x, int y) {
 
 ///Funciones del mouse
 void mouse(int x, int y){
-/*    float xDiff = (x - xPrev)/height;
+    /*float xDiff = (x - xPrev)/height;
     float yDiff = (y - yPrev)/width;
     xPrev = x;
     yPrev = y;
@@ -846,8 +839,8 @@ void init(void){
 	// Load sun texture
 	//http://www.turbosquid.com/FullPreview/Index.cfm/ID/557319
     image = loadBMP("./images/Sun.bmp");
-    glGenTextures( 1, &sunTexId );
-    glBindTexture( GL_TEXTURE_2D, sunTexId );
+    glGenTextures( 1, &texturaPlanetas );
+    glBindTexture( GL_TEXTURE_2D, texturaPlanetas );
     gluBuild2DMipmaps( GL_TEXTURE_2D, GL_RGB, image->width, image->height,
                        GL_RGB, GL_UNSIGNED_BYTE, image->pixels );
     delete image;

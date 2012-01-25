@@ -15,7 +15,7 @@
 * - source/ObstaculoList.h
 * - source/ObstaculoList.cpp*    
 * - source/defConstantes.h
-* - source/OpenBattleSpace.cpp*
+* - source/TrashSpace.cpp*
 * 
 * @section utl Archivos_utilizados
 * - source/imageloader.h* 

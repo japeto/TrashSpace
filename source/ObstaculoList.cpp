@@ -56,9 +56,9 @@ int ObstaculoList::size(){
 void ObstaculoList::insert(float xPos, float yPos, float zPos, int level){
 	
 	int randObj;
-	if(level==1)randObj = 0;//rand() % 3;
-	//if(level==2)randObj= rand() % 8;
-	//if(level>=3)randObj= rand() % 9;
+	if(level==1)randObj = rand() % 3;
+	if(level==2)randObj= rand() % 8;
+	if(level>=3)randObj= rand() % 10;
 	
 	Obstaculo* MyNode = new Obstaculo(xPos, yPos, zPos, NULL);
 	if (randObj==0)
