@@ -84,7 +84,6 @@ void drawA(void){
     if (!pmodels[0]) {
         pmodels[0] = glmReadOBJ("obj/Oesascrewmodule/esascrewmodule.obj");
         if (!pmodels[0]) exit(0);
-        cerr<<"#$$ drawA19 ";
         glmUnitize(pmodels[0]);
         glmFacetNormals(pmodels[0]);
         glmVertexNormals(pmodels[0], 90.0);
@@ -99,7 +98,6 @@ void drawB(void){
     if (!pmodels[1]) {
         pmodels[1] = glmReadOBJ("obj/Ofaith7/faith7.obj");
         if (!pmodels[1]) exit(0);
-        cerr<<"#$$ drawB34 ";
         glmUnitize(pmodels[1]);
         glmFacetNormals(pmodels[1]);
         glmVertexNormals(pmodels[1], 90.0);
@@ -113,7 +111,6 @@ void drawC(void){
     if (!pmodels[2]) {
         pmodels[2] = glmReadOBJ("obj/Ofrienship7/frienship7.obj");
         if (!pmodels[2]) exit(0);
-        //cerr<<"#$$ drawC48 ";
         glmUnitize(pmodels[2]);
         glmFacetNormals(pmodels[2]);
         glmVertexNormals(pmodels[2], 90.0);
@@ -126,7 +123,6 @@ void drawD(void){
     if (!pmodels[3]) {
         pmodels[3] = glmReadOBJ("obj/Osatelite/satelite.obj");
         if (!pmodels[3]) exit(0);
-        //cerr<<"#$$ drawC61 ";
         glmUnitize(pmodels[3]);
         glmFacetNormals(pmodels[3]);
         glmVertexNormals(pmodels[3], 90.0);
@@ -139,7 +135,6 @@ void drawE(void){
     if (!pmodels[3]) {
         pmodels[3] = glmReadOBJ("obj/OHubbleSpaceTelescope/HubbleSpaceTelescope.obj");
         if (!pmodels[3]) exit(0);
-        //cerr<<"#$$ drawC61 ";
         glmUnitize(pmodels[3]);
         glmFacetNormals(pmodels[3]);
         glmVertexNormals(pmodels[3], 90.0);
@@ -152,7 +147,6 @@ void drawF(void){
     if (!pmodels[3]) {
         pmodels[3] = glmReadOBJ("obj/OMGS/mgs.obj");
         if (!pmodels[3]) exit(0);
-        //cerr<<"#$$ drawC61 ";
         glmUnitize(pmodels[3]);
         glmFacetNormals(pmodels[3]);
         glmVertexNormals(pmodels[3], 90.0);
@@ -165,7 +159,6 @@ void drawG(void){
     if (!pmodels[3]) {
         pmodels[3] = glmReadOBJ("obj/OTDRS/tdrs.obj");
         if (!pmodels[3]) exit(0);
-        //cerr<<"#$$ drawC61 ";
         glmUnitize(pmodels[3]);
         glmFacetNormals(pmodels[3]);
         glmVertexNormals(pmodels[3], 90.0);
@@ -178,7 +171,6 @@ void drawH(void){
     if (!pmodels[3]) {
         pmodels[3] = glmReadOBJ("obj/OVikingLander/Vikinglander.obj");
         if (!pmodels[3]) exit(0);
-        //cerr<<"#$$ drawC61 ";
         glmUnitize(pmodels[3]);
         glmFacetNormals(pmodels[3]);
         glmVertexNormals(pmodels[3], 90.0);
@@ -191,7 +183,6 @@ void drawI(void){
     if (!pmodels[3]) {
         pmodels[3] = glmReadOBJ("obj/OVoyagerPro/voyager.obj");
         if (!pmodels[3]) exit(0);
-        //cerr<<"#$$ drawC61 ";
         glmUnitize(pmodels[3]);
         glmFacetNormals(pmodels[3]);
         glmVertexNormals(pmodels[3], 90.0);
@@ -212,7 +203,7 @@ void Obstaculo::draw(int level, bool testMode){
 				glColor3f(2.0f,4.0f,2.0f);
 					glScalef(20,20,20);
 					glRotatef(180,0,1,0);
-					objScaler+=4;
+					objScaler+=34;
 					glRotatef(objScaler,1,0,0);
 					glutSolidSphere(.9,20,20);
 				glColor3f(.0f,.0f,.0f);

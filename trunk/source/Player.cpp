@@ -1,5 +1,6 @@
 #include "Player.h" 			//cabecera
 
+#include <string>
 #include <cstdlib>
 #include <iostream>
 #include <GL/glut.h>			//libreria grafica
@@ -27,8 +28,7 @@ Player::Player(){
 
 // Player::~Player(); // Using default
 
-void drawmodel(void)
-{
+void drawmodel(void){
     if (!pmodel) {
         pmodel = glmReadOBJ("obj/0TrashShip/StarCruiser.obj");
         if (!pmodel) exit(0);
@@ -41,27 +41,6 @@ void drawmodel(void)
 	glEnable(GL_COLOR_MATERIAL);
 }
 
-GLuint LoadTextureRAW( const char * filename, int width, int height)
-{
-    GLuint texture;
-    unsigned char * data;
-    FILE * file;
-    file = fopen( filename, "rb" );
-    if ( file == NULL ) return 0;
-    data = (unsigned char *)malloc( width * height * 3 );
-    fread( data, width * height * 3, 1, file );
-    fclose( file );
-    glGenTextures(1, &texture );
-    glBindTexture(GL_TEXTURE_2D, texture);
-    glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexEnvi( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST );
-    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
-    gluBuild2DMipmaps(GL_TEXTURE_2D, 3, width, height, GL_RGB, GL_UNSIGNED_BYTE, data);
-    free(data);
-    return texture;
-}
 
 void Player::explode(){
 

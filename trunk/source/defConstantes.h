@@ -17,7 +17,7 @@
 /** \def VERSIONAPP
       \brief nombre de la Aplciacion
 */
-#define VERSIONAPP "v1.0"
+#define VERSIONAPP "1.0"
 /** \def M_PI
       \brief Aproximacion del numero PI
 */
@@ -95,18 +95,18 @@
       \brief Niebla principal
 */
 #define FOGEND_L3       0.70
-/** \def SPAWN_L1
-      \brief Sombra principal
+/** \def SPEEDCREATE_L1
+      \brief velocidad de creacion para el nivel 1
 */
-#define SPAWN_L1        1000
+#define SPEEDCREATE_L1	2000
 /** \def SPAWN_L2
       \brief Sombra principal
 */
-#define SPAWN_L2        500
+#define SPEEDCREATE_L2	1000
 /** \def SPAWN_L3
       \brief Sombra principal
 */
-#define SPAWN_L3        200
+#define SPEEDCREATE_L3	800
 /*! Define los tipos de objetos que se cargaran en la aplicacion */
 enum objType{	
 		PLANETA,
