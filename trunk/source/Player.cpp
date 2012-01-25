@@ -21,7 +21,7 @@ Player::Player(){
 	setZPos( -5);
 	setSpinout(false);
 	ySpin=0;
-	setRad(.8);
+	setRad(.2);
 	hittable=true;
 }
 
@@ -30,13 +30,12 @@ Player::Player(){
 void drawmodel(void)
 {
     if (!pmodel) {
-        pmodel = glmReadOBJ("obj/cobramkii/cobramkii.obj");
+        pmodel = glmReadOBJ("obj/0TrashShip/StarCruiser.obj");
         if (!pmodel) exit(0);
         glmUnitize(pmodel);
         glmFacetNormals(pmodel);
         glmVertexNormals(pmodel, 0.0);
-	 }
-    
+	 }  
     glmDraw(pmodel, GLM_SMOOTH | GLM_MATERIAL);
 	glDisable(GL_TEXTURE_2D);
 	glEnable(GL_COLOR_MATERIAL);
@@ -69,7 +68,6 @@ void Player::explode(){
 }
 
 void Player::draw(bool testMode){
-	
     glPushMatrix();
 	glTranslated(xPos, yPos,zPos);
 

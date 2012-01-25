@@ -82,7 +82,7 @@ ObstaculoList listaOstaculos;
 // Game values for Level 1
 void setLevel1(){
 	
-glClearColor(90,90,90,0);
+	glClearColor(90,90,90,0);
     state = LEVEL;
     level = 1;
     levelCounter = LEVEL_TIME;
@@ -240,7 +240,7 @@ void drawGameOver(){
     glColor3f(1.0, 1.0, 1.0);
     glRasterPos2i(width/2 - 40, height/2 - 18/2);
     char buffer[20];
-    sprintf(buffer, "Score: %i", juGador.getPoints());
+    sprintf(buffer, "Puntaje: %i", juGador.getPoints());
     printString(buffer);
 
     // Game Over Screen
@@ -314,18 +314,23 @@ void drawStars(){
 	
     glDisable(GL_LIGHTING);
     glDisable(GL_FOG);
-
-    // Stars
-    for (int i = 0; i < NUM_STARS; i++)
-    {
+    //Estrella
+    for (int i = 0; i < NUM_STARS; i++){
         glPushMatrix();
-        glTranslatef( starPos[i][0], starPos[i][1], GAME_DEPTH );
-        glBegin(GL_QUADS);
-        glVertex2f( -0.5, -0.5);
-        glVertex2f( +0.5, -0.5);
-        glVertex2f( +0.5, +0.5);
-        glVertex2f( -0.5, +0.5);
-        glEnd();
+                glPointSize(rand()%6);
+                glTranslatef(starPos[i][0],starPos[i][1], GAME_DEPTH );
+	        glBegin(GL_POINTS);
+                        glVertex2f( 0, 0);
+	        glEnd();
+	        glBegin(GL_POINTS);
+                        glVertex2f( +0.15, -0.15);
+	        glEnd();
+	        glBegin(GL_POINTS);
+                        glVertex2f( +0.15, +0.15);
+	        glEnd();
+	        glBegin(GL_POINTS);
+                        glVertex2f( -0.15, +0.15);
+	        glEnd();	        
         glPopMatrix();
     }
     glEnable(GL_FOG);
@@ -350,10 +355,10 @@ void drawFog(){
 	
     GLfloat fogColor[3] = { 0.0, 0.0, 0.0 };
     glEnable(GL_FOG);
-    glFogfv( GL_FOG_COLOR, fogColor);
-    glFogi( GL_FOG_MODE, GL_LINEAR);
-    glFogi( GL_FOG_START, fogStart);
-    glFogi( GL_FOG_END, fogEnd);
+            glFogfv( GL_FOG_COLOR, fogColor);
+            glFogi( GL_FOG_MODE, GL_LINEAR);
+            glFogi( GL_FOG_START, fogStart);
+            glFogi( GL_FOG_END, fogEnd);
     glPopMatrix();
 }
 
@@ -400,7 +405,6 @@ void drawStats()
 {
     glDisable(GL_LIGHTING);
     glDisable(GL_FOG);
-
     glPushMatrix();
 
     glMatrixMode(GL_PROJECTION);
@@ -408,12 +412,12 @@ void drawStats()
     gluOrtho2D(0, width, 0, height);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glColor3f(1.0, 1.0, 1.0);
+    glColor3f(90.0, 0.0, 0.0);
 
-    // Level
+    //Nivel
     char buffer[20];
     glRasterPos2i( 1, height - 18);
-    sprintf(buffer, "Level %i", level);
+    sprintf(buffer, "Nivel %i", level);
     printString(buffer);
 
     if (titleCounter != 0)
@@ -423,20 +427,19 @@ void drawStats()
         printString(buffer);
         titleCounter -= 1;
     }
-	
-    // Lives, Health & Score
+        //posicion de las vidas salud y el puntaje
     glRasterPos2i( 1, 1);
-    sprintf(buffer, "Lives: %i", juGador.getLives());
+    sprintf(buffer, "Vidas: %i", juGador.getLives());
     printString(buffer);
-    sprintf(buffer, "    Health: %i", juGador.getHealth());
+    sprintf(buffer, "    Salud: %i", juGador.getHealth());
     printString(buffer);
-    sprintf(buffer, "    Score: %i", juGador.getPoints());
+    sprintf(buffer, "    Puntaje: %i", juGador.getPoints());
     printString(buffer);
     
     if (testMode)
     {
         glRasterPos2i( width/2 - 10, 0);
-        sprintf(buffer, "TEST MODE");
+        sprintf(buffer, "MODO JAPETO");
         printString(buffer);
     }
 
@@ -444,7 +447,7 @@ void drawStats()
     glLoadIdentity();
     gluPerspective( caMara.fov, width/height, caMara.zNear, caMara.zFar );
     glMatrixMode(GL_MODELVIEW);
-
+    glColor3f(1.0, 1.0, 1.0);
     glPopMatrix();
 
     glEnable(GL_FOG);
@@ -500,34 +503,30 @@ void keyOperations (void){
 	}
 
     // Enable 'bounding' spheres used for collision
-	if (keyStates['1']) 
-	{
-        boundSphere = true;
+	if (keyStates['1']) {
+                boundSphere = true;
 	}
 
-    // Enable 'bounding' spheres used for collision
-	if (keyStates['2']) 
-	{
-        boundSphere = false;
+    // Disable 'bounding' spheres used for collision
+	if (keyStates['2']){
+                boundSphere = false;
 	} 
 
     // Extend the play area
-	if (keyStates['3']) 
-	{
-        static bool increasing = true;
-        if (increasing && margin < 100)                     // max size
-            margin += 5;
-        else if (!increasing && margin > (PLAYER_SIZE + 5)) // min size
-            margin -= 5;
-        else if (increasing)
-            increasing = false;
-        else
-            increasing = true;
+	if (keyStates['3']) {
+                static bool increasing = true;
+                if (increasing && margin < 100)                     // max size
+                    margin += 5;
+                else if (!increasing && margin > (PLAYER_SIZE + 5)) // min size
+                    margin -= 5;
+                else if (increasing)
+                    increasing = false;
+                else
+                    increasing = true;
 	}
 
     // Select glass or mesh panel
-    if (keyStates['4'])
-    {
+    if (keyStates['4']){
         mesh = !mesh;
     }
   }
@@ -547,16 +546,16 @@ void keyOperations (void){
         testMode = !testMode;
     }
 
-	if(keyStates[27])
-	{
-	    exit(0);
-	}
+        if(keyStates[27])
+        {
+            exit(0);
+        }
 
 } 
  
 ///metodo display de GLUT para crear los graficos
 void display(void){
-	keyOperations(); 
+        keyOperations(); 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glClearColor(0,0,0,0);
     glPushMatrix();
@@ -568,19 +567,19 @@ void display(void){
             juGador.setPoints(0);
             drawMenu();            
         break;
-		case INSTRUCTIONS:			
-			drawInstructions();
-		break;
-		case CREDITS:
-			drawCredits();
-		break;
+	case INSTRUCTIONS:			
+		drawInstructions();
+	break;
+	case CREDITS:
+		drawCredits();
+	break;
         case LEVEL:
             //Establece la caMaraara
-			caMara.view();
+            caMara.view();
             // Mueve la vista de la caMaraara segun el mouse
-            glTranslatef(juGador.getXPos(), juGador.getYPos(), caMara.dz+5.0);
-            glRotatef(xRot*SENSITIVITY, 1.0, 0.0, 0.0);
-            glRotatef(yRot*SENSITIVITY, 0.0, 1.0, 0.0);
+            glTranslatef(juGador.getXPos(), juGador.getYPos(), caMara.dz+1.0);
+                    glRotatef(xRot*SENSITIVITY, 1.0, 0.0, 0.0);
+                    glRotatef(yRot*SENSITIVITY, 0.0, 1.0, 0.0);
             glTranslatef(-juGador.getXPos(), -juGador.getYPos(), -(caMara.dz+5.0));
             //Habilitar la luz
             drawLight();
@@ -591,18 +590,16 @@ void display(void){
             // Dibujar paneles y espacio de la ventana
             drawPanels();
             // Dibujar los obstaculos
-            listaOstaculos.drawAll(level, boundSphere);
+            listaOstaculos.drawAll(level,boundSphere);
             // Dibujar jugador
             juGador.draw(boundSphere);
             // Dibujar texto en pantalla
             drawStats();
-			glEnd();
+		glEnd();
         break;
         case GAME_OVER:
-        
-			cout<<"game over";
+        	cout<<"game over";
             drawGameOver();
-
         break;
     }
     
@@ -758,7 +755,8 @@ void moveTimer(int value){
 ///Metodo que permite crear un obstaculo segun un intervalo de tiempo en una posicion cualquiera
 void createTimer(int value){
     if (state == LEVEL)    {
-        listaOstaculos.insert( rand() % GAME_WIDTH/2, rand() % GAME_HEIGHT/2, GAME_DEPTH, level );
+        listaOstaculos.insert(rand() % ((int)juGador.getXPos()+GAME_WIDTH/2), rand() % ((int)juGador.getYPos()+GAME_HEIGHT/2), GAME_DEPTH, level );
+        //cout<<"("<<juGador.getXPos()<<","<<juGador.getYPos()<<")"<<"timer\n";
     }
     glutTimerFunc(speedCreate, createTimer, 0);
 }
@@ -855,35 +853,66 @@ void init(void){
     delete image;
 }
 
-int main(int argc, char** argv)
-{
-    srand( time(NULL) );
+int main(int argc, char** argv){
+	//cout<<" "<<argc<<" "<<argv<<" ";
+	if(argc==1){
+		srand( time(NULL) );
 
-    for (int i = 0; i < NUM_STARS; i++){
-        starPos[i][0] = rand() % (STAR_SPREAD*GAME_WIDTH)  - (STAR_SPREAD*GAME_WIDTH/2 + GAME_WIDTH/2);
-        starPos[i][1] = rand() % (STAR_SPREAD*GAME_HEIGHT) - (STAR_SPREAD*GAME_HEIGHT/2+ GAME_HEIGHT/2);
-    }  
-    // GLUT 
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-    glutInitWindowSize(width, height);
-    glutCreateWindow(NAMEAPP);
+		for (int i = 0; i < NUM_STARS; i++){
+			starPos[i][0] = rand() % (STAR_SPREAD*GAME_WIDTH)  - (STAR_SPREAD*GAME_WIDTH/2 + GAME_WIDTH/2); //cordenada X de posicon de la estrella
+			starPos[i][1] = rand() % (STAR_SPREAD*GAME_HEIGHT) - (STAR_SPREAD*GAME_HEIGHT/2+ GAME_HEIGHT/2);//cordenada Y de posicon de la estrella
+		}  
+		// GLUT 
+		glutInit(&argc, argv);
+		glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+		glutInitWindowSize(width, height);
+		glutCreateWindow(NAMEAPP);
 
-    init();
+		init();
 
-    glutDisplayFunc(display);
-    glutReshapeFunc(reshape);
+		glutDisplayFunc(display);
+		glutReshapeFunc(reshape);
 
-	glutKeyboardUpFunc(keyUp);
-	glutKeyboardFunc(keyPressed);
+		glutKeyboardUpFunc(keyUp);
+		glutKeyboardFunc(keyPressed);
 
-    glutSpecialFunc(specialKey);
-    glutPassiveMotionFunc(mouse);
-    glutMouseFunc(click);
-    
-    glutTimerFunc(speedMove, moveTimer, 0);
-    glutTimerFunc(speedCreate, createTimer, 0);
-    glutMainLoop();
+		glutSpecialFunc(specialKey);
+		glutPassiveMotionFunc(mouse);
+		glutMouseFunc(click);
+		
+		glutTimerFunc(speedMove, moveTimer, 0);
+		glutTimerFunc(speedCreate, createTimer, 0);
+		glutMainLoop();
+	}else if(strcmp(argv[1],"-v")==0){
+		cout<<"Version: "<<VERSIONAPP<<"\n";
+	}else if(strcmp(argv[1],"-f")==0){
+		srand( time(NULL) );
 
+		for (int i = 0; i < NUM_STARS; i++){
+			starPos[i][0] = rand() % (STAR_SPREAD*GAME_WIDTH)  - (STAR_SPREAD*GAME_WIDTH/2 + GAME_WIDTH/2); //cordenada X de posicon de la estrella
+			starPos[i][1] = rand() % (STAR_SPREAD*GAME_HEIGHT) - (STAR_SPREAD*GAME_HEIGHT/2+ GAME_HEIGHT/2);//cordenada Y de posicon de la estrella
+		}  
+		// GLUT 
+		glutInit(&argc, argv);
+		glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+		glutInitWindowSize(width, height);
+		glutCreateWindow(NAMEAPP);
+
+		init();
+			glutFullScreen();                /* Go to full screen */	
+		glutDisplayFunc(display);
+		glutReshapeFunc(reshape);
+
+		glutKeyboardUpFunc(keyUp);
+		glutKeyboardFunc(keyPressed);
+		glutSpecialFunc(specialKey);
+		glutPassiveMotionFunc(mouse);
+		glutMouseFunc(click);
+		
+		glutTimerFunc(speedMove, moveTimer, 0);
+		glutTimerFunc(speedCreate, createTimer, 0);
+		glutMainLoop();		
+
+	}
     exit(0);
 }

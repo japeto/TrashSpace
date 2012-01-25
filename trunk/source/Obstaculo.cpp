@@ -14,92 +14,10 @@ using namespace std;
 //modelos que se cargaran
 GLMmodel *pmodels[8];
 
-void drawA(void){
-	
-    if (!pmodels[0]) {
-        pmodels[0] = glmReadOBJ("obj/vaisseau/vaisseau.obj");
-        if (!pmodels[0]) exit(0);
-        //cerr<<"#$$ drawA19 ";
-        glmUnitize(pmodels[0]);
-        glmFacetNormals(pmodels[0]);
-        glmVertexNormals(pmodels[0], 90.0);
-    }
-    glmDraw(pmodels[0], GLM_SMOOTH | GLM_MATERIAL );
-        glDisable(GL_TEXTURE_2D);
-        glEnable(GL_COLOR_MATERIAL);
-}
-
-void drawB(void){
-
-    if (!pmodels[1]) {
-        pmodels[1] = glmReadOBJ("obj/Gemini/GeminiSuit.obj");
-        if (!pmodels[1]) exit(0);
-        //cerr<<"#$$ drawB34 ";
-        glmUnitize(pmodels[1]);
-        glmFacetNormals(pmodels[1]);
-        glmVertexNormals(pmodels[1], 90.0);
-    }
-    glmDraw(pmodels[1], GLM_SMOOTH | GLM_MATERIAL );
-        glDisable(GL_TEXTURE_2D);
-        glEnable(GL_COLOR_MATERIAL);
-}
-
-void drawC(void){
-    if (!pmodels[2]) {
-        pmodels[2] = glmReadOBJ("obj/HEspacial1/MKIII.obj");
-        if (!pmodels[2]) exit(0);
-        //cerr<<"#$$ drawC48 ";
-        glmUnitize(pmodels[2]);
-        glmFacetNormals(pmodels[2]);
-        glmVertexNormals(pmodels[2], 90.0);
-    }
-    glmDraw(pmodels[2], GLM_SMOOTH | GLM_MATERIAL );
-        glDisable(GL_TEXTURE_2D);
-        glEnable(GL_COLOR_MATERIAL);	
-}
-void drawD(void){
-    if (!pmodels[3]) {
-        pmodels[3] = glmReadOBJ("obj/HEspacial2/acesjustforroomshow.obj");
-        if (!pmodels[3]) exit(0);
-        //cerr<<"#$$ drawC61 ";
-        glmUnitize(pmodels[3]);
-        glmFacetNormals(pmodels[3]);
-        glmVertexNormals(pmodels[3], 90.0);
-    }
-    glmDraw(pmodels[3], GLM_SMOOTH | GLM_MATERIAL );
-        glDisable(GL_TEXTURE_2D);
-        glEnable(GL_COLOR_MATERIAL);	
-}
-void drawE(void){
-    if (!pmodels[4]) {
-        pmodels[4] = glmReadOBJ("obj/HEspacial3/EMU.obj");
-        if (!pmodels[4]) exit(0);
-        //cerr<<"#$$ drawE74 ";
-        glmUnitize(pmodels[4]);
-        glmFacetNormals(pmodels[4]);
-        glmVertexNormals(pmodels[4], 90.0);
-    }
-    glmDraw(pmodels[4], GLM_SMOOTH | GLM_MATERIAL );
-        glDisable(GL_TEXTURE_2D);
-        glEnable(GL_COLOR_MATERIAL);		
-}
-void drawF(void){
-    if (!pmodels[4]) {
-        pmodels[4] = glmReadOBJ("obj/Mercury/Mercury.obj");
-        if (!pmodels[4]) exit(0);
-       // cerr<<"#$$ drawE74 ";
-        glmUnitize(pmodels[4]);
-        glmFacetNormals(pmodels[4]);
-        glmVertexNormals(pmodels[4], 90.0);
-    }
-    glmDraw(pmodels[4], GLM_SMOOTH | GLM_MATERIAL );
-        glDisable(GL_TEXTURE_2D);
-        glEnable(GL_COLOR_MATERIAL);		
-}
 // default constructor added
 Obstaculo::Obstaculo(){
     crash = false;
-	objtype = NAVECOBRA;
+	objtype = PLANETA;
 	xAxis = rand() % 2;
 	yAxis = rand() % 2;
 	if (xAxis == 0 && yAxis == 0)
@@ -130,7 +48,7 @@ Obstaculo::Obstaculo(float x, float y, float z , Obstaculo* nextnode){
 	spinAngle = 0.0;
 	colorGen = rand() % 360;
 	next = nextnode;
-	objtype = NAVECOBRA;
+	objtype = PLANETA;
 	sunNum= 0;
 	objScaler= rand() %100;
 	objRad=0;
@@ -160,6 +78,259 @@ Obstaculo::Obstaculo(float x,float y,float z,Obstaculo* nextnode, objType objT){
     objSize = 2.0;
 }
 
+
+void drawA(void){
+	
+    if (!pmodels[0]) {
+        pmodels[0] = glmReadOBJ("obj/Oesascrewmodule/esascrewmodule.obj");
+        if (!pmodels[0]) exit(0);
+        cerr<<"#$$ drawA19 ";
+        glmUnitize(pmodels[0]);
+        glmFacetNormals(pmodels[0]);
+        glmVertexNormals(pmodels[0], 90.0);
+    }
+    glmDraw(pmodels[0], GLM_SMOOTH | GLM_MATERIAL );
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_COLOR_MATERIAL);
+}
+
+void drawB(void){
+
+    if (!pmodels[1]) {
+        pmodels[1] = glmReadOBJ("obj/Ofaith7/faith7.obj");
+        if (!pmodels[1]) exit(0);
+        cerr<<"#$$ drawB34 ";
+        glmUnitize(pmodels[1]);
+        glmFacetNormals(pmodels[1]);
+        glmVertexNormals(pmodels[1], 90.0);
+    }
+    glmDraw(pmodels[1], GLM_SMOOTH | GLM_MATERIAL );
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_COLOR_MATERIAL);
+}
+
+void drawC(void){
+    if (!pmodels[2]) {
+        pmodels[2] = glmReadOBJ("obj/Ofrienship7/frienship7.obj");
+        if (!pmodels[2]) exit(0);
+        //cerr<<"#$$ drawC48 ";
+        glmUnitize(pmodels[2]);
+        glmFacetNormals(pmodels[2]);
+        glmVertexNormals(pmodels[2], 90.0);
+    }
+    glmDraw(pmodels[2], GLM_SMOOTH | GLM_MATERIAL );
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_COLOR_MATERIAL);	
+}
+void drawD(void){
+    if (!pmodels[3]) {
+        pmodels[3] = glmReadOBJ("obj/Osatelite/satelite.obj");
+        if (!pmodels[3]) exit(0);
+        //cerr<<"#$$ drawC61 ";
+        glmUnitize(pmodels[3]);
+        glmFacetNormals(pmodels[3]);
+        glmVertexNormals(pmodels[3], 90.0);
+    }
+    glmDraw(pmodels[3], GLM_SMOOTH | GLM_MATERIAL );
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_COLOR_MATERIAL);	
+}
+void drawE(void){
+    if (!pmodels[3]) {
+        pmodels[3] = glmReadOBJ("obj/OHubbleSpaceTelescope/HubbleSpaceTelescope.obj");
+        if (!pmodels[3]) exit(0);
+        //cerr<<"#$$ drawC61 ";
+        glmUnitize(pmodels[3]);
+        glmFacetNormals(pmodels[3]);
+        glmVertexNormals(pmodels[3], 90.0);
+    }
+    glmDraw(pmodels[3], GLM_SMOOTH | GLM_MATERIAL );
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_COLOR_MATERIAL);	
+}
+void drawF(void){
+    if (!pmodels[3]) {
+        pmodels[3] = glmReadOBJ("obj/OMGS/mgs.obj");
+        if (!pmodels[3]) exit(0);
+        //cerr<<"#$$ drawC61 ";
+        glmUnitize(pmodels[3]);
+        glmFacetNormals(pmodels[3]);
+        glmVertexNormals(pmodels[3], 90.0);
+    }
+    glmDraw(pmodels[3], GLM_SMOOTH | GLM_MATERIAL );
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_COLOR_MATERIAL);	
+}
+void drawG(void){
+    if (!pmodels[3]) {
+        pmodels[3] = glmReadOBJ("obj/OTDRS/tdrs.obj");
+        if (!pmodels[3]) exit(0);
+        //cerr<<"#$$ drawC61 ";
+        glmUnitize(pmodels[3]);
+        glmFacetNormals(pmodels[3]);
+        glmVertexNormals(pmodels[3], 90.0);
+    }
+    glmDraw(pmodels[3], GLM_SMOOTH | GLM_MATERIAL );
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_COLOR_MATERIAL);	
+}
+void drawH(void){
+    if (!pmodels[3]) {
+        pmodels[3] = glmReadOBJ("obj/OVikingLander/Vikinglander.obj");
+        if (!pmodels[3]) exit(0);
+        //cerr<<"#$$ drawC61 ";
+        glmUnitize(pmodels[3]);
+        glmFacetNormals(pmodels[3]);
+        glmVertexNormals(pmodels[3], 90.0);
+    }
+    glmDraw(pmodels[3], GLM_SMOOTH | GLM_MATERIAL );
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_COLOR_MATERIAL);	
+}
+void drawI(void){
+    if (!pmodels[3]) {
+        pmodels[3] = glmReadOBJ("obj/OVoyagerPro/voyager.obj");
+        if (!pmodels[3]) exit(0);
+        //cerr<<"#$$ drawC61 ";
+        glmUnitize(pmodels[3]);
+        glmFacetNormals(pmodels[3]);
+        glmVertexNormals(pmodels[3], 90.0);
+    }
+    glmDraw(pmodels[3], GLM_SMOOTH | GLM_MATERIAL );
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_COLOR_MATERIAL);	
+}
+void Obstaculo::draw(int level, bool testMode){
+	if(level!=0)objScaler+=1;
+    glPushMatrix();
+    
+    glTranslatef( getXPos(), getYPos(), getZPos() );
+	if(objRad!=0) putOut();
+	switch(objtype){
+	   case PLANETA:
+			if(!crash){
+				glColor3f(2.0f,4.0f,2.0f);
+					glScalef(20,20,20);
+					glRotatef(180,0,1,0);
+					objScaler+=4;
+					glRotatef(objScaler,1,0,0);
+					glutSolidSphere(.9,20,20);
+				glColor3f(.0f,.0f,.0f);
+			}else{}	
+		break;
+	    case MODULO:
+			if(!crash){
+				glScalef(20,20,20);
+				glRotatef(180,0,1,0);
+				objScaler+=4;
+				glRotatef(objScaler,1,0,0);
+				drawA();
+				setObjRad(18.0);
+				if(testMode)	
+					glutWireSphere(.9,10,10);
+			}else{}
+		break;   
+	    case VEHICULO1:
+			if(!crash){
+				glScalef(20,20,20);
+				glRotatef(180,0,1,0);
+				objScaler+=4;
+				glRotatef(objScaler,1,0,0);
+				drawB();
+				setObjRad(18.0);
+				if(testMode)	
+					glutWireSphere(.9,10,10);
+			}else{}
+		break; 	
+	    case VEHICULO2:
+			if(!crash){
+				glScalef(20,20,20);
+				glRotatef(180,0,1,0);
+				objScaler+=4;
+				glRotatef(objScaler,1,0,0);
+				drawC();
+				setObjRad(18.0);
+				if(testMode)	
+					glutWireSphere(.9,10,10);
+			}else{}
+		break; 
+		case SATELITE:
+			if(!crash){
+				glScalef(20,20,20);
+				glRotatef(180,0,1,0);
+				objScaler+=4;
+				glRotatef(objScaler,1,0,0);
+				drawD();
+				setObjRad(18.0);
+				if(testMode)	
+					glutWireSphere(.9,10,10);
+			}else{}
+		break; 
+		case TELESCOPIOE:
+			if(!crash){
+				glScalef(20,20,20);
+				glRotatef(180,0,1,0);
+				objScaler+=4;
+				glRotatef(objScaler,1,0,0);
+				drawE();
+				setObjRad(18.0);
+				if(testMode)	
+					glutWireSphere(.9,10,10);
+			}else{}
+		break;	
+		case SATELITE1:
+			if(!crash){
+				glScalef(20,20,20);
+				glRotatef(180,0,1,0);
+				objScaler+=4;
+				glRotatef(objScaler,1,0,0);
+				drawF();
+				setObjRad(18.0);
+				if(testMode)	
+					glutWireSphere(.9,10,10);
+			}else{}
+		break;				
+		case ANTENA:
+		
+			if(!crash){
+				glScalef(20,20,20);
+				glRotatef(180,0,1,0);
+				objScaler+=4;
+				glRotatef(objScaler,1,0,0);
+				drawG();
+				setObjRad(18.0);
+				if(testMode)	
+					glutWireSphere(.9,10,10);
+			}else{}
+		break;			
+		case VEHICULO3:
+			if(!crash){
+				glScalef(20,20,20);
+				glRotatef(180,0,1,0);
+				objScaler+=4;
+				glRotatef(objScaler,1,0,0);
+				drawH();
+				setObjRad(18.0);
+				if(testMode)	
+					glutWireSphere(.9,10,10);
+			}else{}
+		break;		
+		case BUSCADOR:
+			if(!crash){
+				glScalef(20,20,20);
+				glRotatef(180,0,1,0);
+				objScaler+=4;
+				glRotatef(objScaler,1,0,0);
+				drawI();
+				setObjRad(18.0);
+				if(testMode)	
+					glutWireSphere(.9,10,10);
+			}else{}
+		break;			
+	}
+    glPopMatrix();
+	if (level != 0) spinAngle += 5.0;  
+}
 void Obstaculo::setXPos(float x){
 	xPos = x;
 }
@@ -238,90 +409,6 @@ void Obstaculo::putOut(){
 		yPos=objRad-5;
 	if(yPos>205-objRad)
 		yPos=205-objRad;
-}
-
-void Obstaculo::draw(int level, bool testMode){
-	if(level!=0)objScaler+=1;
-    glPushMatrix();
-    
-    glTranslatef( getXPos(), getYPos(), getZPos() );
-	if(objRad!=0) putOut();
-	switch(objtype){
-		case NAVECOBRA:
-			if(!crash){
-				glScalef(20,20,20);
-				glRotatef(180,0,1,0);
-				objScaler+=4;
-				glRotatef(objScaler,1,0,0);
-				//drawA();
-				setObjRad(18.0);
-				if(testMode)	
-					glutWireSphere(.9,10,10);
-			}else{}
-        break;
-		case TRAJEGEMINI:
-			if(!crash){
-				glScalef(20,20,20);
-				glRotatef(180,0,1,0);
-				objScaler+=4;
-				glRotatef(objScaler,1,0,0);
-				drawB();
-				setObjRad(18.0);
-				if(testMode)	
-					glutWireSphere(.9,10,10);
-			}else{}
-        break;     
-		case HombreEspacial1:
-			if(!crash){
-				glScalef(20,20,20);
-				glRotatef(180,0,1,0);
-				objScaler+=4;
-				glRotatef(objScaler,1,0,0);
-				drawC();
-				setObjRad(18.0);
-				if(testMode)	
-					glutWireSphere(.9,10,10);
-			}else{}
-        break;   
-		case HombreEspacial2:
-			if(!crash){
-				glScalef(20,20,20);
-				glRotatef(180,0,1,0);
-				objScaler+=4;
-				glRotatef(objScaler,1,0,0);
-				drawD();
-				setObjRad(18.0);
-				if(testMode)	
-					glutWireSphere(.9,10,10);
-			}else{}
-        break; 
-		case HombreEspacial3:
-			if(!crash){
-				glScalef(20,20,20);
-				glRotatef(180,0,1,0);
-				objScaler+=4;
-				glRotatef(objScaler,1,0,0);
-				drawE();
-				setObjRad(18.0);
-				if(testMode)	
-					glutWireSphere(.9,10,10);
-			}else{}
-        break;  
-		case MERCURY:
-			if(!crash){
-				glScalef(20,20,20);
-				glRotatef(180,0,1,0);
-				objScaler+=4;
-				glRotatef(objScaler,1,0,0);
-				drawF();
-				setObjRad(18.0);
-				if(testMode)	
-					glutWireSphere(.9,10,10);
-			}else{}
-        break;                  
-	}
-    glPopMatrix();
-	if (level != 0) spinAngle += 5.0;  
 }
 
 void Obstaculo::move(int level)

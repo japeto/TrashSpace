@@ -13,7 +13,11 @@
 /** \def NAMEAPP
       \brief nombre de la Aplciacion
 */
-#define NAMEAPP "TrashSpace v1.0"
+#define NAMEAPP "TrashSpace"
+/** \def VERSIONAPP
+      \brief nombre de la Aplciacion
+*/
+#define VERSIONAPP "v1.0"
 /** \def M_PI
       \brief Aproximacion del numero PI
 */
@@ -38,11 +42,11 @@
 /** \def GAME_WIDTH
       \brief Ancho de la ventana segunla coordenada X -ancho del campo de vista
 */
-#define GAME_WIDTH      400     // X
+#define GAME_WIDTH      200     // X
 /** \def GAME_HEIGHT
       \brief Alto de la ventana segunla coordenada Y -alto del campo de vista
 */
-#define GAME_HEIGHT     400     // Y
+#define GAME_HEIGHT     200     // Y
 /** \def GAME_DEPTH
       \brief profundidad de la ventana segunla coordenada Z
 */
@@ -106,22 +110,31 @@
 /*! Define los tipos de objetos que se cargaran en la aplicacion */
 enum objType{	
 		PLANETA,
-		NAVECOBRA,/*!< http://www.turbosquid.com/3d-models/cobra-mk-ii-fighter-space-3ds/256898 <br/> <img src="http://files.turbosquid.com/Preview/2010/12/05__17_14_00/pic3.jpg8355b9dc-8e3b-4d04-a5f3-6299c24ff818Larger.jpg" alt="" height="42" width="42" /> */
-		TRAJEGEMINI,/*!< http://www.nasa.gov/multimedia/3d_resources/assets/gemini_suit.html <br/> <img src="http://www.nasa.gov/images/content/473185main_gemini_suit_428-321.jpg" alt="" height="42" width="42" /> */
-		NAVEGHAWK,/*!< http://www.nasa.gov/multimedia/3d_resources/assets/global_hawk.html <br/> <img src="http://www.nasa.gov/images/content/473224main_global_hawk_428-321.jpg" alt="" height="42" width="42" /> */
-		HombreEspacial1,/*!< http://www.nasa.gov/multimedia/3d_resources/assets/mkiii_suit.html <br/> <img src="http://www.nasa.gov/images/content/473256main_mkiii_suit_428-321.jpg" alt="" height="42" width="42" /> */
-		HombreEspacial2,/*!< http://www.nasa.gov/multimedia/3d_resources/assets/aces.html <br/> <img src="http://www.nasa.gov/images/content/473065main_aces_428-321.jpg" alt="" height="42" width="42" /> */
-		HombreEspacial3,/*!< http://www.nasa.gov/multimedia/3d_resources/assets/emu.html <br/> <img src="http://www.nasa.gov/images/content/473157main_emu_428-321.jpg" alt="" height="42" width="42" /> */
-		MERCURY,/*!< http://www.nasa.gov/multimedia/3d_resources/assets/mercury_suit.html <br/> <img src="http://www.nasa.gov/images/content/473235main_mercury_suit_428-321.jpg" alt="" height="42" width="42" /> */
-		VAISSEAU/*!< http://www.turbosquid.com/3d-models/free-obj-mode-starship-ship/642303 <br/> <img src="http://files.turbosquid.com/Preview/2011/12/02__00_42_59/9-vaisseau.jpgdb1a8b5d-d650-414b-9aa9-85d1c9389eebLarge.jpg" alt="" height="12" width="12" /> */
-			};
+		MODULO,
+		VEHICULO1,
+		VEHICULO2,
+		SATELITE,
+		TELESCOPIOE,
+		SATELITE1,
+		ANTENA,
+		VEHICULO3,
+		BUSCADOR
+		//NAVECOBRA,/*!< http://www.turbosquid.com/3d-models/cobra-mk-ii-fighter-space-3ds/256898 <br/> <img src="http://files.turbosquid.com/Preview/2010/12/05__17_14_00/pic3.jpg8355b9dc-8e3b-4d04-a5f3-6299c24ff818Larger.jpg" alt="" height="42" width="42" /> */
+		//TRAJEGEMINI,/*!< http://www.nasa.gov/multimedia/3d_resources/assets/gemini_suit.html <br/> <img src="http://www.nasa.gov/images/content/473185main_gemini_suit_428-321.jpg" alt="" height="42" width="42" /> */
+		//NAVEGHAWK,/*!< http://www.nasa.gov/multimedia/3d_resources/assets/global_hawk.html <br/> <img src="http://www.nasa.gov/images/content/473224main_global_hawk_428-321.jpg" alt="" height="42" width="42" /> */
+		//HombreEspacial1,/*!< http://www.nasa.gov/multimedia/3d_resources/assets/mkiii_suit.html <br/> <img src="http://www.nasa.gov/images/content/473256main_mkiii_suit_428-321.jpg" alt="" height="42" width="42" /> */
+		//HombreEspacial2,/*!< http://www.nasa.gov/multimedia/3d_resources/assets/aces.html <br/> <img src="http://www.nasa.gov/images/content/473065main_aces_428-321.jpg" alt="" height="42" width="42" /> */
+		//HombreEspacial3,/*!< http://www.nasa.gov/multimedia/3d_resources/assets/emu.html <br/> <img src="http://www.nasa.gov/images/content/473157main_emu_428-321.jpg" alt="" height="42" width="42" /> */
+		//MERCURY,/*!< http://www.nasa.gov/multimedia/3d_resources/assets/mercury_suit.html <br/> <img src="http://www.nasa.gov/images/content/473235main_mercury_suit_428-321.jpg" alt="" height="42" width="42" /> */
+		//VAISSEAU/*!< http://www.turbosquid.com/3d-models/free-obj-mode-starship-ship/642303 <br/> <img src="http://files.turbosquid.com/Preview/2011/12/02__00_42_59/9-vaisseau.jpgdb1a8b5d-d650-414b-9aa9-85d1c9389eebLarge.jpg" alt="" height="12" width="12" /> */
+		};
 
 /** \def PLAYER_SIZE
-      \brief Tama&ntilde;o del jugador
+      \brief Tama&ntilde;o espacio de juego para el jugador
 */
-#define PLAYER_SIZE     9
+#define PLAYER_SIZE     1
 /** \def PLAYER_STEP
-      \brief Numero de particulas en la aplicacion antes de cambiar de nivel
+      \brief Velocidad de avance del juagador
 */
 #define PLAYER_STEP     2
 /** \def LEAN_DECELL

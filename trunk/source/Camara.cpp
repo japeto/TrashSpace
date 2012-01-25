@@ -62,28 +62,27 @@ void Camara::roll(float angle) {
 	crossProduct(rx, ry, rz, dx, dy, dz, ux, uy, uz);
 }
 
-// Translates the Camara from its current location by the vector (stepX, stepY, stepZ)
+// Trasnlada la camara desde el punto (x,y,z) a laposicion (stepX, stepY, stepZ)
 void Camara::translate(float stepX, float stepY, float stepZ) {
 	cx += stepX;
 	cy += stepY;
 	cz += stepZ;
 }
 
-// Strafes the Camara, a positive value strafes to the right
+
 void Camara::strafe(float step) {
 	cx += rx*step;
 	cy += ry*step;
 	cz += rz*step;
 }
 
-// Moves the Camara, a positive value moves forward
+
 void Camara::move(float step) {
 	cx += dx*step;
 	cy += dy*step;
 	cz += dz*step;
 }
 
-// Raises the Camara, a negative value lowers it
 void Camara::rise(float step) {
 	cx += ux*step;
 	cy += uy*step;
