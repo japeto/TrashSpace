@@ -26,6 +26,6 @@ En el ambiente linux en la que se satisfacen las dependencias es solo ejecutar (
  * GLUT
 
 =DESCARGA=
-*[http://code.google.com/p/trashspace/downloads/detail?name=TrashSpace_v1.0.3-.7z&can=2&q= TrashSpace.7z]
+* 16.5MB > [http://code.google.com/p/trashspace/downloads/detail?name=TrashSpace_v1.0.3-.7z&can=2&q= TrashSpace.7z]
 
-*[http://code.google.com/p/trashspace/downloads/detail?name=TrashSpace_v1.0.3-.rar&can=2&q= TrashSpace.rar]
+* 23.5MB >[http://code.google.com/p/trashspace/downloads/detail?name=TrashSpace_v1.0.3-.rar&can=2&q= TrashSpace.rar]
