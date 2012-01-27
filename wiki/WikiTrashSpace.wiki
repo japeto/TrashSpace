@@ -1,7 +1,6 @@
 #summary TrashSpace el mejor juego OPengel y C++
 #labels Phase-Deploy,Phase-Support
 
-= INTRODUCCION =
 Creado por:
 ==Jefferson Amado Peña Torres==
 
