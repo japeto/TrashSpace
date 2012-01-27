@@ -1,7 +1,15 @@
 #summary Fuentes (Sources *.cpp)-(Wavefront *.obj)-(Headers *.h)
 #labels Phase-Requirements,Phase-Implementation,Phase-Design,Phase-QA,Featured
 
-===Para poder revisar el codigo fuente con svn ===
+=== Para poder revisar el codigo fuente con svn ===
 Copia la siguiente intruccion en el cliente Subversion
 
 *svn checkout http://trashspace.googlecode.com/svn/trunk/ trashspace*
+
+=== Para ver el changelog ===
+
+*[http://code.google.com/p/trashspace/source/list Changelog]*
+
+=== Para ver la estructura de archivos===
+
+*[http://code.google.com/p/trashspace/source/browse/#svn%2Ftrunk]*
